@@ -7,6 +7,9 @@ import { HttpHeaders, HttpParams } from "@angular/common/http";
 import { Http, Response, RequestOptions, Headers } from '@angular/http';
 import { environment } from '../../environments/environment';
 
+/**
+ * 对post、delete、get、put请求进行统一封装
+ */
 export class BaseService {
     public paramsBody = {
         token: "",
@@ -16,8 +19,7 @@ export class BaseService {
     };
 
     private options = {
-        headers: new HttpHeaders().set('Content-Type', 'application/json').set('Access-Control-Allow-Origin', '*')
-            .set('Access-Control-Allow-Credentials', 'true'),
+        headers: new HttpHeaders().set('Content-Type', 'application/json').set('Access-Control-Allow-Origin', '*'),
         params: new HttpParams()
     }
 
@@ -29,16 +31,15 @@ export class BaseService {
         return this.http.post(url, this.paramsBody, this.options);
     }
 
-    delete(url: string, params: string) {
-        this.paramsBody.body = params;
-        console.log(this.paramsBody);
+    delete(url: string, id: string) {
+        this.paramsBody.body = { studentId : id};
+        console.log("delete", this.paramsBody);
         return this.http.post(url, this.paramsBody, this.options);
     }
 
     get(url: string, params: any) {
         this.paramsBody.body = params;
         console.log(this.paramsBody);
-        // this.options.params.;
         return this.http.get(url, params);
     }
 
