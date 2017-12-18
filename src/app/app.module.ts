@@ -11,6 +11,8 @@ import { PositioningService } from 'ngx-bootstrap/positioning';
 import { AppComponent } from './app.component';
 import { routing }       from './app.routing';
 import { StudentComponent } from './components/student/student.component';
+import { LoginComponent } from './components/login/login.component';
+import { LoginService } from './services/login.service';
 import { StudentService } from "./services/student.service";
 import { DataInterceptor } from "./services/data-interceptor";
 
@@ -19,6 +21,7 @@ import { DataInterceptor } from "./services/data-interceptor";
   //declarations(声明).用来声明该模块所依赖的组件等内容
   declarations: [
     AppComponent,
+    LoginComponent,
     StudentComponent
   ],
 
@@ -36,6 +39,7 @@ import { DataInterceptor } from "./services/data-interceptor";
 
   //该模块的依赖注入项(设置依赖的服务)
   providers: [
+    LoginService,
     StudentService,
     // BsModalService,
     // ComponentLoaderFactory,
